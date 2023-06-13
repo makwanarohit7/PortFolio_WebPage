@@ -13,15 +13,16 @@ const About = () => {
           </p>
         </div>
 
-        <p className="text-xl mt-20">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius,
-        </p>
-
-        <br />
-
-        <p className="text-xl">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
-          pariatur, vel similique sint, nobis aspernatur ut praesentium
+        <p className="text-xl mt-20 leading-relaxed">
+          Hello! My name is Rohit Makwana and I am currently pursuing my
+          Bachelor's degree in Information Technology from LDRP-ITR College. I
+          am in my 7th semester and have been learning various programming
+          languages and technologies during my course. I have a keen interest in
+          React And React Native and have been actively working on projects
+          related to React. Apart from academics, I enjoy learning new
+          technologies. I am excited to showcase my skills and projects through
+          this portfolio and hope to connect with like-minded individuals in the
+          industry.
         </p>
       </div>
     </div>
