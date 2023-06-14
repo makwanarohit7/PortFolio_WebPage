@@ -1,6 +1,51 @@
 import React from "react";
+import { BsFillPersonLinesFill } from "react-icons/bs";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
 
 const About = () => {
+  const links = [
+    {
+      id: 1,
+      child: (
+        <>
+          LinkedIn <FaLinkedin size={30} />
+        </>
+      ),
+      href: "https://www.linkedin.com/in/makwana-rohit/",
+      style: "rounded-tr-md",
+    },
+    {
+      id: 2,
+      child: (
+        <>
+          GitHub <FaGithub size={30} />
+        </>
+      ),
+      href: "https://github.com/makwanarohit7",
+    },
+    {
+      id: 3,
+      child: (
+        <>
+          Mail <HiOutlineMail size={30} />
+        </>
+      ),
+      href: "mailto:makawanarohit70@gmail.com",
+    },
+    {
+      id: 4,
+      child: (
+        <>
+          Resume <BsFillPersonLinesFill size={30} />
+        </>
+      ),
+      href: "/resume.pdf",
+      style: "rounded-br-md",
+      download: true,
+    },
+  ];
+
   return (
     <div
       name="about"
@@ -24,6 +69,21 @@ const About = () => {
           this portfolio and hope to connect with like-minded individuals in the
           industry.
         </p>
+
+        <div className="flex justify-between mt-10 hadow-md ">
+          {links.map(({ id, child, href, style, download }) => (
+            <a
+              key={id}
+              href={href}
+              className="flex items-center w-full text-white hover:scale-110 duration-500"
+              download={download}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {child}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );
