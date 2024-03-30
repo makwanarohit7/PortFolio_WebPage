@@ -12,12 +12,10 @@ const Home = () => {
       <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center h-full px-5 md:flex-row">
         <div className="flex flex-col justify-center h-full">
           <h2 className="text-4xl sm:text-7xl font-bold text-white">
-            I'm a React Developer
+            I'm a React Native Developer
           </h2>
-          <p className="text-gray-500 py-5 max-w-md">
-            I am a web and app developer with a keen interest in using React JS
-            and React Native , I am currently pursuing my bachelor's in
-            Information Technology In Gandhinagar.
+          <p className="text-gray-500 py-5 max-w-md text-xl">
+            And Currently Working At Alpha-e Barcode Solutions Pvt. Ltd.
           </p>
           <div>
             <Link
