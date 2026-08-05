@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { resumeData } from "../data/resumeData";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter, FaInstagram, FaPaperPlane } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -18,149 +18,150 @@ const Contact = () => {
       label: "Email",
       value: resumeData.contact.email,
       href: `mailto:${resumeData.contact.email}`,
-      color: "text-red-400",
-      description: "Send me an email anytime"
+      color: "text-cyan-400 bg-cyan-500/10 border-cyan-500/30",
+      description: "Send an email for project inquiries or hiring",
     },
     {
       icon: FaPhone,
       label: "Phone",
       value: resumeData.contact.phone,
       href: `tel:${resumeData.contact.phone}`,
-      color: "text-green-400",
-      description: "Call me for urgent matters"
+      color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
+      description: "Available for calls & urgent inquiries",
     },
     {
       icon: FaMapMarkerAlt,
       label: "Location",
       value: resumeData.contact.location,
-      color: "text-blue-400",
-      description: "Based in Ahmedabad, Gujarat"
+      color: "text-blue-400 bg-blue-500/10 border-blue-500/30",
+      description: "Ahmedabad, Gujarat, India (Open to Remote)",
     },
   ];
-
-  const socialLinks = resumeData.onlineProfiles;
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
+
+    // Simulate submission
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-      
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus(null), 3000);
-    }, 1500);
+
+      setTimeout(() => setSubmitStatus(null), 4000);
+    }, 1200);
   };
 
   return (
-    <div
+    <section
       name="contact"
-      className="w-full min-h-screen bg-gradient-to-b from-gray-900 to-black p-2 text-white"
+      className="w-full min-h-screen bg-slate-950 py-24 text-white relative overflow-hidden"
     >
-      <div className="flex flex-col p-2 justify-center max-w-screen-lg mx-auto h-full">
-        <div className="pb-4 animate-fade-in-up">
-          <p className="text-2xl sm:text-3xl font-bold inline border-b-4 border-cyan-500">
+      {/* Radial Background Glow */}
+      <div className="absolute top-1/2 right-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Title */}
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in-up">
+          <span className="text-cyan-400 font-semibold text-xs tracking-widest uppercase px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 inline-block mb-3">
             Get In Touch
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+            Contact <span className="text-gradient">Me</span>
+          </h2>
+          <div className="w-20 h-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto rounded-full mb-6"></div>
+          <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
+            Have a project in mind or interested in hiring a React Native developer with 2.5+ years experience? Let's connect!
           </p>
-          <p className="py-3 text-gray-300">Let's discuss your next project or just say hello!</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Contact Information */}
-          <div className="space-y-6 animate-slide-in-left">
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold text-cyan-400 mb-4">
-                Contact Information
-              </h3>
-              
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <div 
-                    key={index} 
-                    className="flex items-start space-x-3 bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-cyan-500/50"
-                  >
-                    <div className={`text-xl sm:text-2xl ${info.color} mt-1`}>
-                      <info.icon />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-xs text-gray-400 mb-1">{info.label}</p>
-                      {info.href ? (
-                        <a
-                          href={info.href}
-                          className="text-white hover:text-cyan-400 transition-colors duration-300 text-sm sm:text-base font-medium"
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-white text-sm sm:text-base font-medium">{info.value}</p>
-                      )}
-                      <p className="text-gray-400 text-xs mt-1">{info.description}</p>
-                    </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          {/* Left Column: Contact Cards */}
+          <div className="lg:col-span-5 space-y-6 animate-slide-in-left">
+            <h3 className="text-2xl font-bold text-white mb-6">
+              Contact Information
+            </h3>
+
+            <div className="space-y-4">
+              {contactInfo.map((info, index) => (
+                <div
+                  key={index}
+                  className="glass-card p-6 rounded-2xl border border-slate-800 flex items-start space-x-4 hover:border-cyan-500/40 transition-all group"
+                >
+                  <div className={`p-3.5 rounded-xl border ${info.color} text-xl group-hover:scale-110 transition-transform`}>
+                    <info.icon />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <span className="text-xs font-semibold uppercase text-slate-400 tracking-wider">
+                      {info.label}
+                    </span>
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        className="block text-base sm:text-lg font-bold text-white hover:text-cyan-400 transition-colors mt-0.5"
+                      >
+                        {info.value}
+                      </a>
+                    ) : (
+                      <p className="text-base sm:text-lg font-bold text-white mt-0.5">
+                        {info.value}
+                      </p>
+                    )}
+                    <p className="text-xs text-slate-400 mt-1">
+                      {info.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            {/* Social Links */}
-            <div>
-              <h4 className="text-base sm:text-lg font-semibold text-cyan-400 mb-3">
-                Follow Me
-              </h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`text-xl sm:text-2xl hover:scale-110 transition-transform duration-300 ${
-                      social.platform === "LinkedIn" ? "text-blue-500 hover:text-blue-400" :
-                      social.platform === "GitHub" ? "text-gray-400 hover:text-white" :
-                      social.platform === "Twitter" ? "text-blue-400 hover:text-blue-300" :
-                      "text-pink-500 hover:text-pink-400"
-                    }`}
-                    title={social.platform}
-                  >
-                    {React.createElement(social.icon)}
-                  </a>
-                ))}
+            {/* Quick Availability Badge */}
+            <div className="glass-card p-6 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900 to-cyan-950/30">
+              <div className="flex items-center space-x-3 mb-2">
+                <span className="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+                <h4 className="font-bold text-white text-base">
+                  Available for Work
+                </h4>
               </div>
-              <p className="text-gray-400 text-xs mt-2">
-                Connect with me on social media for updates and insights
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                Open to full-time roles, contract opportunities, and mobile app consulting.
               </p>
             </div>
-
-            
           </div>
 
-          {/* Contact Form */}
-          <div className="space-y-4 animate-slide-in-right">
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold text-cyan-400 mb-4">
-                Send Message
+          {/* Right Column: Contact Form */}
+          <div className="lg:col-span-7 animate-slide-in-right">
+            <div className="glass-card p-6 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl">
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Send a Message
               </h3>
-              
+
               {submitStatus === "success" && (
-                <div className="bg-green-500/20 border border-green-500/50 text-green-400 p-3 rounded-lg mb-4">
-                  Thank you! Your message has been sent successfully. I'll get back to you soon!
+                <div className="bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 p-4 rounded-xl mb-6 flex items-center space-x-3 text-sm animate-fade-in">
+                  <FaCheckCircle className="text-xl flex-shrink-0 text-emerald-400" />
+                  <span>
+                    Thank you! Your message has been sent successfully. I will get back to you shortly!
+                  </span>
                 </div>
               )}
-              
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className="block text-xs font-medium text-gray-300 mb-1">
-                      Name *
+                    <label
+                      htmlFor="name"
+                      className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2"
+                    >
+                      Your Name *
                     </label>
                     <input
                       type="text"
@@ -169,14 +170,17 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-all duration-300"
-                      placeholder="Your name"
+                      placeholder="John Doe"
+                      className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700/80 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all text-sm"
                     />
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="email" className="block text-xs font-medium text-gray-300 mb-1">
-                      Email *
+                    <label
+                      htmlFor="email"
+                      className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2"
+                    >
+                      Your Email *
                     </label>
                     <input
                       type="email"
@@ -185,14 +189,17 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-all duration-300"
-                      placeholder="your.email@example.com"
+                      placeholder="john@example.com"
+                      className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700/80 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all text-sm"
                     />
                   </div>
                 </div>
-                
+
                 <div>
-                  <label htmlFor="subject" className="block text-xs font-medium text-gray-300 mb-1">
+                  <label
+                    htmlFor="subject"
+                    className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2"
+                  >
                     Subject *
                   </label>
                   <input
@@ -202,13 +209,16 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-cyan-500 text-white transition-all duration-300"
-                    placeholder="What's this about?"
+                    placeholder="Project Inquiry / Job Opportunity"
+                    className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700/80 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all text-sm"
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="message" className="block text-xs font-medium text-gray-300 mb-1">
+                  <label
+                    htmlFor="message"
+                    className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2"
+                  >
                     Message *
                   </label>
                   <textarea
@@ -217,35 +227,34 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    rows="3"
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:border-cyan-500 text-white resize-none transition-all duration-300"
-                    placeholder="Tell me about your project or just say hello..."
+                    rows="4"
+                    placeholder="Tell me about your mobile app project or inquiry..."
+                    className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700/80 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all text-sm resize-none"
                   ></textarea>
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/35 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-60 cursor-pointer"
                 >
                   {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-white mr-2"></div>
-                      Sending...
-                    </>
+                    <span>Sending Message...</span>
                   ) : (
                     <>
-                      <FaPaperPlane className="mr-2" />
-                      Send Message
+                      <FaPaperPlane className="text-sm" />
+                      <span>Send Message</span>
                     </>
                   )}
                 </button>
               </form>
             </div>
           </div>
+
         </div>
+
       </div>
-    </div>
+    </section>
   );
 };
 

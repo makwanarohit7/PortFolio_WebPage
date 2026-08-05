@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaCode } from "react-icons/fa";
 import { Link } from "react-scroll";
 import { resumeData } from "../data/resumeData";
 
@@ -8,139 +8,129 @@ const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const links = [
-    {
-      id: 1,
-      link: "home",
-      label: "Home",
-    },
-    {
-      id: 2,
-      link: "about",
-      label: "About",
-    },
-    {
-      id: 3,
-      link: "skills",
-      label: "Skills",
-    },
-    {
-      id: 4,
-      link: "projects",
-      label: "Projects",
-    },
-    {
-      id: 5,
-      link: "experience",
-      label: "Experience",
-    },
-    {
-      id: 6,
-      link: "contact",
-      label: "Contact",
-    },
+    { id: 1, link: "home", label: "Home" },
+    { id: 2, link: "about", label: "About" },
+    { id: 3, link: "skills", label: "Skills" },
+    { id: 4, link: "projects", label: "Projects" },
+    { id: 5, link: "experience", label: "Experience" },
+    { id: 6, link: "contact", label: "Contact" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
+      setScrolled(window.scrollY > 40);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className={`flex justify-between items-center w-full h-20 px-4 text-white fixed z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-black/95 backdrop-blur-md border-b border-gray-800 shadow-lg' 
-        : 'bg-black/80 backdrop-blur-sm'
-    }`}>
-      <div className="flex items-center">
-        <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer">
-          {resumeData.name}
-        </h1>
-        <span className="text-gray-400 text-sm ml-2 hidden sm:block">| Developer</span>
-      </div>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "glass-nav py-3 shadow-2xl shadow-cyan-950/20" : "bg-transparent py-5"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        {/* Brand Logo */}
+        <Link
+          to="home"
+          smooth
+          duration={500}
+          className="flex items-center space-x-3 cursor-pointer group"
+        >
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300">
+            <FaCode className="text-xl" />
+          </div>
+          <div>
+            <span className="text-xl font-bold text-gradient tracking-tight">
+              {resumeData.name}
+            </span>
+            <div className="flex items-center space-x-2">
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span className="text-xs text-slate-400 font-medium">
+                {resumeData.experienceYears} Yrs Exp • React Native Pro
+              </span>
+            </div>
+          </div>
+        </Link>
 
-      <ul className="hidden md:flex space-x-8">
-        {links.map(({ id, link, label }) => (
-          <li
-            key={id}
-            className="px-4 cursor-pointer capitalize font-medium text-gray-300 hover:text-cyan-400 transition-colors duration-200 relative group"
-          >
-            <Link 
-              to={link} 
-              smooth 
-              duration={500}
-              spy={true}
-              offset={-80}
-              activeClass="text-cyan-400"
-              className="relative"
-            >
-              {label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      {/* Mobile menu button */}
-      <div
-        onClick={() => setNav(!nav)}
-        className="cursor-pointer pr-4 z-50 text-gray-300 hover:text-cyan-400 transition-colors duration-200 md:hidden"
-      >
-        {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
-      </div>
-
-      {/* Mobile menu */}
-      {nav && (
-        <div className="fixed inset-0 bg-black/98 backdrop-blur-lg  flex items-center justify-center">
-          <ul className="flex flex-col justify-center items-center h-full text-white space-y-4">
-            {links.map(({ id, link, label }) => (
-              <li
-                key={id}
-                className="px-4 cursor-pointer capitalize py-4 text-3xl hover:text-cyan-400 transition-colors duration-200 font-medium"
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          {links.map(({ id, link, label }) => (
+            <li key={id}>
+              <Link
+                to={link}
+                smooth
+                duration={500}
+                spy={true}
+                offset={-80}
+                activeClass="!text-cyan-400 font-semibold !bg-slate-800/60 shadow-inner border border-slate-700/50"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-cyan-300 hover:bg-slate-800/40 transition-all duration-200 cursor-pointer block"
               >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Action CTA Button */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link
+            to="contact"
+            smooth
+            duration={500}
+            className="px-5 py-2.5 text-xs font-semibold rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md hover:shadow-cyan-500/25 hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
+            Hire Me
+          </Link>
+        </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <button
+          onClick={() => setNav(!nav)}
+          aria-label="Toggle Menu"
+          className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 md:hidden focus:outline-none transition-colors"
+        >
+          {nav ? <FaTimes size={22} /> : <FaBars size={22} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {nav && (
+        <div className="md:hidden fixed inset-x-0 top-20 bg-slate-950/95 backdrop-blur-2xl border-b border-slate-800 px-6 py-8 shadow-2xl transition-all animate-fade-in-up">
+          <ul className="flex flex-col space-y-4">
+            {links.map(({ id, link, label }) => (
+              <li key={id}>
                 <Link
-                  onClick={() => setNav(!nav)}
+                  onClick={() => setNav(false)}
                   to={link}
                   smooth
                   duration={500}
                   spy={true}
                   offset={-80}
-                  activeClass="text-cyan-400"
+                  activeClass="text-cyan-400 font-semibold bg-slate-800/80"
+                  className="block px-4 py-3 rounded-xl text-lg font-medium text-slate-200 hover:bg-slate-800/50 hover:text-cyan-300 transition-all"
                 >
                   {label}
                 </Link>
               </li>
             ))}
-            
-            {/* Mobile social links */}
-            <div className="flex space-x-6 mt-8">
-              <a
-                href={resumeData.onlineProfiles[1].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors duration-300 text-2xl"
+            <li className="pt-4">
+              <Link
                 onClick={() => setNav(false)}
+                to="contact"
+                smooth
+                duration={500}
+                className="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg shadow-cyan-500/20"
               >
-                {React.createElement(resumeData.onlineProfiles[1].icon)}
-              </a>
-              <a
-                href={resumeData.onlineProfiles[0].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-blue-500 transition-colors duration-300 text-2xl"
-                onClick={() => setNav(false)}
-              >
-                {React.createElement(resumeData.onlineProfiles[0].icon)}
-              </a>
-            </div>
+                Let's Talk
+              </Link>
+            </li>
           </ul>
         </div>
       )}
-    </div>
+    </nav>
   );
 };
 

@@ -3,6 +3,7 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 export const resumeData = {
   name: "Rohit Makwana",
   title: "React Native Developer",
+  experienceYears: "2.5+",
   contact: {
     phone: "+91 9173493449",
     email: "makawanarohit70@gmail.com",
@@ -11,22 +12,22 @@ export const resumeData = {
     location: "Ahmedabad, India",
   },
   summary:
-    "React Native Developer with 1.5+ years of experience in building cross-platform mobile apps for Android and iOS. Skilled in JavaScript, TypeScript, Firebase, and REST API integration. Strong in creating responsive UIs, managing local storage (SQLite, AsyncStorage), and performance optimization. Focused on writing clean code and delivering smooth user experiences.",
+    "React Native Developer with 2.5+ years of experience in building cross-platform mobile apps for Android and iOS. Skilled in JavaScript, TypeScript, React Native, Node.js, NestJS, Express.js, .NET, and PostgreSQL. Strong in creating responsive UIs, managing offline local storage (SQLite, AsyncStorage), REST API integration, and performance optimization. Focused on writing clean code and delivering smooth user experiences.",
   experience: [
     {
       role: "React Native Developer",
-      company: "Alpha-e Barcode Solutions Pvt. Ltd.",
+      company: "Alpha ERP Solutions Pvt. Ltd.",
       date: "12/2023 - Present",
       location: "Ahmedabad, India",
       duties: [
         "Built and maintained cross-platform mobile apps for Android and iOS using React Native CLI.",
-        "Developed complex business logic for modules like Sales, Quotation, and Billing in the JSoft Extreme and Payroll products.",
+        "Developed complex business logic for core modules like Sales, Quotation, and Billing in the JSoft Extreme and Payroll products.",
         "Created and integrated custom Native Modules to extend React Native functionality.",
-        "Implemented SQLite for efficient offline data storage and seamless synchronization.",
+        "Implemented SQLite for efficient offline data storage and seamless data synchronization.",
         "Integrated WebView to embed dynamic web content within native screens.",
         "Improved app performance and reduced load time by optimizing rendering and memory usage.",
-        "Troubleshot and resolved complex UI and logic bugs, improving reliability and stability.",
-        "Developed simple RESTful APIs using .NET with reference-based architecture for mobile data handling.",
+        "Troubleshot and resolved complex UI and logic bugs, improving overall app reliability and stability.",
+        "Developed and consumed RESTful APIs built with .NET, NestJS, and Express.js with reference-based architecture for mobile data handling.",
       ],
     },
     {
@@ -35,8 +36,8 @@ export const resumeData = {
       date: "05/2023 - 07/2023",
       location: "Ahmedabad, India",
       duties: [
-        "Built dynamic UIs with React.js and managed state using Redux.",
-        "Gained hands-on experience in API integration and component architecture.",
+        "Built dynamic UIs with React.js and managed complex state architectures using Redux.",
+        "Gained hands-on experience in API integration, modern CSS, and component-driven architecture.",
       ],
     },
   ],
@@ -45,13 +46,13 @@ export const resumeData = {
       degree: "Bachelor of Engineering (IT)",
       school: "LDRP Institute of Technology and Research",
       date: "2020 - 2024",
-      location: "Gandhinagar",
+      location: "Gandhinagar, India",
     },
     {
       degree: "Higher Secondary (GSEB)",
       school: "Krishna Science School",
       date: "2018 - 2020",
-      location: "Keshod",
+      location: "Keshod, India",
     },
   ],
   languages: [
@@ -60,14 +61,14 @@ export const resumeData = {
     { name: "English", level: "Proficient", proficiency: 4 },
   ],
   skills: [
-    { category: "Mobile", tools: "React Native" },
+    { category: "Mobile Development", tools: "React Native, Expo, React Native CLI, Android & iOS" },
     {
-      category: "Frontend",
-      tools: "React.js, Next.js, JavaScript (ES6+), TypeScript, Tailwind CSS",
+      category: "Frontend Technologies",
+      tools: "React.js, Next.js, JavaScript (ES6+), TypeScript, Tailwind CSS, HTML5/CSS3",
     },
-    { category: "Backend", tools: "Node.js, Express.js" },
-    { category: "Databases", tools: "MySQL, MongoDB, PostgreSQL, SSMS" },
-    { category: "Tools", tools: "GitHub, Postman, VS Code, Xcode, Firebase" },
+    { category: "Backend Technologies", tools: "Node.js, Express.js, NestJS, .NET" },
+    { category: "Databases & Storage", tools: "PostgreSQL, MongoDB, MySQL, SQLite, SSMS" },
+    { category: "Tools & Cloud", tools: "GitHub, Postman, VS Code, Xcode, Firebase, REST APIs" },
   ],
   courses: [
     {
@@ -82,7 +83,7 @@ export const resumeData = {
       description:
         "Fincast is a smart financial forecasting app that predicts future expenses based on your income and spending habits. It helps users stay on budget and achieve financial goals.",
       link: "https://play.google.com/store/apps/details?id=com.sasvat.fincast",
-      linkText: "Fincast",
+      linkText: "Fincast Play Store",
       image: "fincast",
       tech: ["React Native", "Node.js", "Express.js", "MongoDB", "REST APIs"],
     },
@@ -96,11 +97,11 @@ export const resumeData = {
       tech: ["React Native", "Node.js", "Express.js", "MongoDB", "REST APIs"],
     },
     {
-      name: "Fitness App",
+      name: "Fitness & Wellness App",
       description:
-        "It is used to maintain our mental and physical health and also Such features like meditation with sound and different workout modes for different body parts.",
+        "A comprehensive wellness application to maintain mental and physical health featuring guided meditation with high-definition audio and customized workout routines for all fitness levels.",
       image: "fitness",
-      tech: ["React Native", "Audio APIs", "Health APIs"],
+      tech: ["React Native", "Audio APIs", "Health APIs", "Tailwind CSS"],
     },
   ],
   onlineProfiles: [
@@ -115,4 +116,4 @@ export const resumeData = {
       icon: FaGithub,
     },
   ],
-}; 
+};

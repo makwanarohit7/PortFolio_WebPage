@@ -2,7 +2,22 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        slate: {
+          950: "#020617",
+        },
+        cyan: {
+          950: "#083344",
+        },
+        emerald: {
+          950: "#022c22",
+        },
+        purple: {
+          950: "#3b0764",
+        },
+      },
+    },
     fontFamily: {
       signature: ["Great Vibes"],
     },
